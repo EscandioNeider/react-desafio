@@ -1,0 +1,69 @@
+.pacman-container {
+  position: fixed;
+  width: 100vw;
+  left: -2000px;
+  top: 23vh; /* Alinha com a fileira de botões */
+  z-index: 999;
+  pointer-events: none;
+  animation: pacman-move 4.8s linear forwards; /* Aumentei o tempo do movimento */
+}
+
+.pacman {
+  width: 0;
+  height: 0;
+  border-top: 60px solid #fdd835;
+  border-right: 60px solid transparent;
+  border-bottom: 60px solid #fdd835;
+  border-left: 60px solid #fdd835;
+  border-radius: 60px;
+  position: absolute;
+  top: 30vh;
+  right: 0px;
+  z-index: 999;
+  animation: pacman-chomp 0.5s infinite steps(2); /* O tempo de chomp permanece igual */
+}
+
+/* Movimento do Pacman */
+@keyframes pacman-move {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(100vw);
+  }
+}
+
+/* Boca abrindo e fechando */
+@keyframes pacman-chomp {
+  0%, 100% {
+    border-top: 40px solid #fdd835;
+    border-bottom: 40px solid #fdd835;
+    border-top: 40px solid #fdd835;
+    border-right: 40px solid #fdd835;
+    border-radius: 60px;
+  }
+  50% {
+    border-top: 60px solid #fdd835;
+    border-right: 60px solid transparent;
+    border-bottom: 60px solid #fdd835;
+    border-left: 60px solid #fdd835;
+    border-radius: 60px;
+  }
+}
+
+/* Animação de "comer" botões */
+.button-eaten {
+  animation: eat-button 1s forwards;
+  animation-delay: 1s; /* Atraso de 1 segundo para o botão começar a ser "comido" */
+}
+
+@keyframes eat-button {
+  0% {
+    opacity: 1;
+    transform: scale(1);
+  }
+  100% {
+    opacity: 0;
+    transform: scale(0);
+  }
+}

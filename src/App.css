@@ -1,0 +1,161 @@
+/* Estilo Global */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Arial', sans-serif;
+  background: #000000;
+  color: #ffffff;
+  transition: background 0.3s ease;
+}
+
+.app {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  font-family: Arial, sans-serif;
+  text-align: center;
+  transition: background 1s ease-in-out;
+}
+
+/* Header */
+header {
+  color: #fff;
+  padding: 20px;
+  text-align: center;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  animation: slideDown 1s ease-out;
+}
+
+header h1 {
+  font-size: 3rem;
+  animation: fadeIn 2s ease-in-out;
+}
+
+/* Animação de Fade In */
+@keyframes fadeIn {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+/* Efeito de Slide Down para o Header */
+@keyframes slideDown {
+  0% {
+    transform: translateY(-100%);
+  }
+  100% {
+    transform: translateY(0);
+  }
+}
+
+/* Conteúdo Principal */
+.content {
+  flex: 1;
+  padding: 40px;
+  text-align: center;
+  animation: zoomIn 1s ease-out;
+}
+
+.content h2 {
+  font-size: 2.5rem;
+  margin-bottom: 20px;
+}
+
+.content p {
+  font-size: 1.2rem;
+  line-height: 1.6;
+  max-width: 800px;
+  margin: 0 auto;
+  animation: fadeIn 3s ease-out;
+}
+
+/* Animação de Zoom In */
+@keyframes zoomIn {
+  0% {
+    transform: scale(0.8);
+    opacity: 0;
+  }
+  100% {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+
+/* Footer */
+footer {
+  background: #33333356;
+  color: #fff;
+  padding: 20px;
+  text-align: center;
+  box-shadow: 0 -4px 8px rgba(0, 0, 0, 0.1);
+  font-size: 0.9rem;
+  position: relative;
+  bottom: 0;
+  width: 100%;
+}
+
+/* Animação para o footer */
+footer p {
+  animation: fadeIn 1.5s ease-out;
+}
+.rainbow-background {
+  position: relative;
+  background: linear-gradient(45deg,
+    rgba(190, 57, 139, 0.788),
+    #ca1313c2,
+    #da6c23be,
+    rgba(247, 206, 25, 0.788),
+    rgba(173, 238, 52, 0.74),
+    #2edba2af,
+    rgba(98, 44, 199, 0.76),
+    rgba(147, 63, 196, 0.781)
+  );
+  background-size: 400%;
+  animation: rainbowAnimation 18s ease forwards;
+  transition: background 2s ease-in-out;
+  overflow: hidden;
+}
+
+/* overlay que escurece */
+.rainbow-background::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.829);
+  pointer-events: none;
+  animation: darkenOverlay 18s ease forwards;
+  z-index: -1;
+}
+
+/* animação do arco-íris */
+@keyframes rainbowAnimation {
+  0% {
+    background-position: 0% 0%;
+  }
+  50% {
+    background-position: 300% 0%;
+  }
+  100% {
+    background-position: 0% 0%;
+  }
+}
+
+/* animação que escurece o fundo */
+@keyframes darkenOverlay {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}

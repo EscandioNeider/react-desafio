@@ -1,0 +1,606 @@
+/* Estilos para os botões */
+.button-container {
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  height: 40vh;
+  padding-top: 20px;
+  gap: 20px;
+  margin: 0; /* Remove qualquer margem */
+  position: relative; /* Para o fundo de gradiente e as estrelas aparecerem corretamente */
+  overflow: hidden; /* Evita que as estrelas saiam da tela */
+}
+
+
+
+/* Botões */
+button {
+  position: relative;
+  text-decoration: none;
+  font-size: 15px;
+  text-transform: uppercase;
+  letter-spacing: 5px;
+  line-height: 48px;
+  width: 160px;
+  cursor: pointer;
+  font-weight: bold;
+  height: 55px;
+  -webkit-box-reflect: bottom 1px linear-gradient(transparent, #0004);
+  border: none;
+}
+
+button span {
+  position: absolute;
+  display: flex;
+  justify-content: center;
+  top: 4px;
+  right: 4px;
+  bottom: 4px;
+  left: 4px;
+  text-align: center;
+  background: #2e2e2e;
+  color: rgba(255, 255, 255, 0.781);
+  transition: 0.5s;
+  z-index: 1;
+}
+
+button:hover span {
+  color: rgba(255, 255, 255, 1);
+}
+
+/* Efeito de gradiente no botão */
+button::before,
+button::after {
+  content: "";
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  background-size: 400%;
+  filter: blur(10px);
+  transition: 0.5s;
+  background: linear-gradient(
+    45deg,
+    #91155d,
+    #525296,
+    #0f0,
+    #ff0,
+    #fb0094,
+    #00f,
+    #0f0,
+    #ff0
+  );
+  animation: animate123 20% linear infinite;
+}
+
+button:hover::before,
+button:hover::after {
+  opacity: 100%;
+}
+
+/* Animação do gradiente no botão */
+@keyframes animate123 {
+  0% {
+    background-position: 0 0;
+  }
+  50% {
+    background-position: 300% 0;
+  }
+  100% {
+    background-position: 0 0;
+  }
+}
+
+button span::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 50%;
+  background: rgba(255, 255, 255, 0);
+}
+
+/* Estilos para os confetes */
+.star {
+  position: absolute;
+  border-radius: 50%;
+  opacity: 0;
+  animation: star-animation 5s ease-out forwards;
+}
+
+@keyframes star-animation {
+  0% {
+    transform: scale(0) rotate(0deg); /* Início da animação sem rotação */
+    opacity: 1;
+  }
+  50% {
+    transform: scale(1.5) translateY(-50vh); /* Mover para cima e girar */
+    opacity: 1;
+  }
+  100% {
+    transform: scale(0);
+    opacity: 0;
+  }
+}
+
+/* Gradiente no fundo quando arco-iris é clicado */
+.button-container.gradient-active {
+  background-size: 400%;
+  animation: gradient-animation 5s ease-in-out; /* Transição suave */
+}
+
+@keyframes gradient-animation {
+  0% {
+    background-position: 0 0;
+  }
+  50% {
+    background-position: 100% 0;
+  }
+  100% {
+    background-position: 0 0;
+    background-color: #000000;
+  }
+}
+
+/* Manter o fundo preto da tela */
+body, .button-container {
+  transition: background 1s ease-in-out;
+}
+
+/* galaxia */
+body.galaxy-theme {
+  background: linear-gradient(to right, #000000, #1a1a1a);
+  color: white;
+  overflow: hidden;
+  position: relative;
+}
+
+.star-shape {
+  position: absolute;
+  width: 0;
+  height: 0;
+  color: yellow;
+  font-size: 2rem;
+  pointer-events: none;
+  user-select: none;
+  animation: twinkle 2s infinite ease-in-out;
+}
+
+@keyframes twinkle {
+  0%, 100% {
+    opacity: 0.8;
+    transform: scale(1);
+  }
+  50% {
+    opacity: 1;
+    transform: scale(1.2);
+  }
+}
+
+.rocket {
+  position: absolute;
+  top: 80vh;
+  left: -100px;
+  width: 220px;
+  height: auto;
+  animation: flyRocket 8s linear infinite;
+  z-index: 10;
+}
+
+@keyframes flyRocket {
+  0% {
+    transform: translateX(0) rotate(10deg);
+    opacity: 1;
+  }
+  100% {
+    transform: translateX(130vw) translateY(-95vh) rotate(15deg);
+    opacity: 1;
+  }
+}
+
+/* Efeito de gradiente no botão */
+body.galaxy-theme button::before,
+body.galaxy-theme button::after {
+  content: "";
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  background-size: 400%;
+  filter: blur(10px);
+  transition: 0.5s;
+  background: linear-gradient(
+    45deg,
+    #ffffffbd,
+    #fffcedcb,
+    rgba(255, 250, 203, 0.815),
+    rgba(254, 255, 191, 0.856),
+    #fff9c0,
+    rgba(255, 253, 146, 0.822),
+    rgba(252, 238, 156, 0.753),
+    rgba(255, 247, 129, 0.911)
+  );
+  animation: animate123 20% linear infinite;
+}
+
+/* Flores */
+/* Centro */
+.flower {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 12px;
+  height: 12px;
+  margin: -6px;
+  background-color: #fd688d;
+  border-radius: 50%;
+  opacity: 0;
+  animation: flowerCore 15s ease-out forwards;
+}
+
+/* Pétalas */
+.petal-wrapper {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 0;
+  height: 0;
+  transform-origin: center;
+}
+
+.petal {
+  position: absolute;
+  top: 0px; 
+  left: -5px;
+  width: 20px;
+  height: 30px;
+  background: linear-gradient(to bottom, #ecc6ca, #fd688d);
+  border-radius: 50%;
+  opacity: 0;
+  animation: petalBloom 15s ease-out forwards;
+}
+
+
+.petal:nth-child(2) { transform: rotate(0deg); animation-delay: 0s; }
+.petal:nth-child(3) { transform: rotate(45deg); animation-delay: 0.2s; }
+.petal:nth-child(4) { transform: rotate(90deg); animation-delay: 0.4s; }
+.petal:nth-child(5) { transform: rotate(135deg); animation-delay: 0.6s; }
+.petal:nth-child(6) { transform: rotate(180deg); animation-delay: 0.8s; }
+.petal:nth-child(7) { transform: rotate(225deg); animation-delay: 1s; }
+
+/* Animação miolo */
+@keyframes flowerCore {
+  0% { opacity: 0; transform: scale(0.3); }
+  10% { opacity: 1; transform: scale(1); }
+  80% { opacity: 1; }
+  100% { opacity: 0; transform: scale(0.5); }
+}
+
+/* Animação pétala */
+@keyframes petalBloom {
+  0%, 19% { opacity: 0; transform: scale(0.3); }
+  20%, 30% { opacity: 1; transform: scale(1); }
+  80% { opacity: 1; }
+  100% { opacity: 0; transform: scale(0.0); }
+}
+
+.center {
+    position: absolute;
+    top: -5px;
+    left: -5px;
+    width: 20px;
+    height: 20px;
+    background-color: rgb(255, 249, 200);
+    border-radius: 50%;
+    animation: flowerCore 15s ease-out forwards;
+  
+}
+
+body.flower-theme {
+  background-color: #d7ffcd;
+  color:#5bca63;
+  transition: background-color 0.5s ease;  /* Transição suave */
+}
+
+body.flower-theme header h1 {
+  color: #5bca63;
+  animation: FlorLetra 5s infinite; /* Animação de cor do texto */
+}
+
+/* Efeito de animação de cor do texto */
+@keyframes FlorLetra {
+    0% {
+        color:  rgb(255, 255, 255);
+    }
+    25% {
+        color:#c6ffcd;
+    }
+    50% {
+        color:  rgb(255, 255, 255);
+    }
+    75% {
+        color: #ff9cb9;
+    }
+    100% {
+        color:  rgb(255, 255, 255);
+    }
+}
+
+  
+
+body.flower-theme header {
+  background: linear-gradient(45deg, #b8ffbd, #ffb1c6, #b8ffbd, #ffb1c6);
+  animation: florheader 18s ease 1 forwards;
+  transition: background 2s ease-in-out;
+  background-size: 300% 100%;
+  background-repeat: no-repeat;
+}
+
+@keyframes florheader {
+  0% {
+    background-position: 0% 0%;
+  }
+  50% {
+    background-position: 100% 0%;
+  }
+  100% {
+    background-position: 0% 0%;
+  }
+}
+
+body.flower-theme button span{
+  background-color: #ffb6dbfa;
+  color: #ffffff;
+}
+
+/* Efeito de gradiente no botão */
+body.flower-theme button::before,
+body.flower-theme button::after {
+  content: "";
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  background-size: 400%;
+  filter: blur(10px);
+  transition: 0.5s;
+  background: linear-gradient(
+    45deg,
+    #fd688d,
+    #fd688d,
+    #ff8fab,
+    #ff8fab,
+    #f7a2b8,
+    #f7a2b8,
+    #f7a2b8,
+    #fabacb
+  );
+  animation: animate123 20% linear infinite;
+}
+
+/* pacman-theme */
+body.pacman-theme {
+  color: rgb(255, 230, 0);
+  transition: all 0.6s ease-in-out;
+}
+
+/* Cabeçalho com gradiente animado */
+body.pacman-theme header {
+  background: linear-gradient(45deg, #005bb9, #005cb996, #005bb9, #005cb996);
+  animation: PACheader 18s ease 1 forwards;
+  transition: background 2s ease-in-out;
+  background-size: 300% 100%;
+  background-repeat: no-repeat;
+}
+
+/* Título animado com cor e efeito glow */
+body.pacman-theme header h1 {
+  color: rgb(255, 230, 0);
+  animation: PacmanLetra 5s infinite, pacGlow 1.5s ease-in-out infinite alternate;
+}
+
+/* Animação de cor do texto (estilo Pac-Man) */
+@keyframes PacmanLetra {
+  0% {
+    color: #f90313;
+  }
+  25% {
+    color: #fc8906;
+  }
+  50% {
+    color: #f8d70e;
+  }
+  75% {
+    color: #05c0f4;
+  }
+  100% {
+    color: #f88995;
+  }
+}
+
+/* Glow animado no texto (efeito arcade neon) */
+@keyframes pacGlow {
+  from {
+    text-shadow: 0 0 5px #fff200, 0 0 10px #fff200, 0 0 15px #ff5f00;
+  }
+  to {
+    text-shadow: 0 0 15px #ffffff, 0 0 20px #ffffff, 0 0 25px #ffffff;
+  }
+}
+
+/* Animação do background do header */
+@keyframes PACheader {
+  0% {
+    background-position: 0% 0%;
+  }
+  50% {
+    background-position: 100% 0%;
+  }
+  100% {
+    background-position: 0% 0%;
+  }
+}
+
+/* Scanlines estilo fliperama retrô */
+body.pacman-theme::before {
+  content: "";
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  background: repeating-linear-gradient(
+    to bottom,
+    rgba(255, 255, 255, 0.02),
+    rgba(255, 255, 255, 0.02) 1px,
+    transparent 1px,
+    transparent 2px
+  );
+  z-index: 9999;
+  animation: scanMove 4s linear infinite;
+}
+
+@keyframes scanMove {
+  0% {
+    background-position: 0 0;
+  }
+  100% {
+    background-position: 0 2px;
+  }
+}
+
+/* Esferas */
+.shenlong-container {
+  bottom: 5%;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  gap: 20px;
+  z-index: 999;
+  animation: glowUp 1s ease-in-out;
+}
+
+.esfera {
+  width: 50px;
+  height: 50px;
+  animation: floatEsfera 2s infinite ease-in-out;
+}
+
+@keyframes floatEsfera {
+  0%, 100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-15px);
+  }
+}
+
+@keyframes glowUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* SHenlong */
+
+.shenlong-container {
+  position: fixed;
+  width: 100vw;
+  height: 100vh;
+  z-index: 999;
+  background: url(../img/summon.gif) no-repeat center center;
+  background-size: cover;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  transition: background 2s ease-in-out;
+}
+
+.shenlong-container.darkened {
+  background: rgba(0, 0, 0, 0.85); /* fundo escuro após gif */
+}
+
+
+.orbital-esferas {
+  position: absolute;
+  top: 45%;
+  width: 0;
+  height: 0;
+}
+
+.esfera-1,
+.esfera-2,
+.esfera-3,
+.esfera-4,
+.esfera-5,
+.esfera-6,
+.esfera-7,
+.estrela-1,
+.estrela-2,
+.estrela-3,
+.estrela-4,
+.estrela-5,
+.estrela-6,
+.estrela-7 {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 80px;
+  height: 45px;
+  animation: girar 4s linear infinite, aparecer 1s ease forwards;
+  opacity: 0;
+}
+
+/* Distribuição circular - intercalando esferas e estrelas */
+.esfera-1  { transform: rotate(0deg)   translateX(-350px) rotate(-0deg);   animation-delay: 0s, 0s;   }
+.estrela-1 { transform: rotate(30deg)  translateX(-350px) rotate(-30deg);  animation-delay: 0.3s, 0.3s; }
+.esfera-2  { transform: rotate(60deg)  translateX(-350px) rotate(-60deg);  animation-delay: 0.6s, 0.6s;   }
+.estrela-2 { transform: rotate(90deg)  translateX(-350px) rotate(-90deg);  animation-delay: 0.9s, 0.9s; }
+.esfera-3  { transform: rotate(120deg) translateX(-350px) rotate(-120deg); animation-delay: 1.2s, 1.2s;   }
+.estrela-3 { transform: rotate(150deg) translateX(-350px) rotate(-150deg); animation-delay: 1.5s, 1.5s; }
+.esfera-4  { transform: rotate(180deg) translateX(-350px) rotate(-180deg); animation-delay: 1.8s, 1.8s;   }
+.estrela-4 { transform: rotate(210deg) translateX(-350px) rotate(-210deg); animation-delay: 2.1s, 2.1s; }
+.esfera-5  { transform: rotate(240deg) translateX(-350px) rotate(-240deg); animation-delay: 2.4s, 2.4s;   }
+.estrela-5 { transform: rotate(270deg) translateX(-350px) rotate(-270deg); animation-delay: 2.7s, 2.7s; }
+.esfera-6  { transform: rotate(300deg) translateX(-350px) rotate(-300deg); animation-delay: 3s, 3s;  }
+.estrela-6 { transform: rotate(330deg) translateX(-350px) rotate(-330deg); animation-delay: 3.3s, 3.3s; }
+.esfera-7  { transform: rotate(360deg) translateX(-350px) rotate(-360deg); animation-delay: 3.6s, 3.6s;}
+.estrela-7 { transform: rotate(330deg) translateX(-350px) rotate(-330deg); animation-delay: 3.8s, 3.8s; }
+
+@keyframes aparecer {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+@keyframes girar {
+  from {
+    transform: rotate(0deg) translateX(310px) rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg) translateX(310px) rotate(-360deg);
+  }
+}
+
+@keyframes fadeIn {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
